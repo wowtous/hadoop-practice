@@ -19,22 +19,10 @@
     </plugins>
   </build>
 
-  <name>hadoop-mapreduce</name>
-  <url>http://maven.apache.org</url>
+  <name>hadoop-practice</name>
+  <url>https://github.com/wowtous/hadoop-practice.git</url>
 
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-
-    <!--<dependency>-->
-      <!--<groupId>org.apache.hadoop</groupId>-->
-      <!--<artifactId>hadoop-annotations</artifactId>-->
-      <!--<version>2.7.2</version>-->
-    <!--</dependency>-->
     <dependency>
       <groupId>org.apache.hadoop</groupId>
       <artifactId>hadoop-common</artifactId>
@@ -45,30 +33,10 @@
       <artifactId>hadoop-hdfs</artifactId>
       <version>2.7.2</version>
     </dependency>
-    <!--<dependency>-->
-      <!--<groupId>org.apache.hadoop</groupId>-->
-      <!--<artifactId>hadoop-mapreduce-client-app</artifactId>-->
-      <!--<version>2.7.2</version>-->
-    <!--</dependency>-->
     <dependency>
       <groupId>org.apache.hadoop</groupId>
       <artifactId>hadoop-mapreduce-client-core</artifactId>
       <version>2.7.2</version>
     </dependency>
-    <!--<dependency>-->
-      <!--<groupId>org.apache.hadoop</groupId>-->
-      <!--<artifactId>hadoop-mapreduce-client-jobclient</artifactId>-->
-      <!--<version>2.7.2</version>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-      <!--<groupId>org.apache.hadoop</groupId>-->
-      <!--<artifactId>hadoop-yarn-api</artifactId>-->
-      <!--<version>2.7.2</version>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-      <!--<groupId>org.apache.hadoop</groupId>-->
-      <!--<artifactId>hadoop-client</artifactId>-->
-      <!--<version>2.7.2</version>-->
-    <!--</dependency>-->
   </dependencies>
 </project>

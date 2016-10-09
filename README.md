@@ -78,6 +78,7 @@ cat test2.txt
 ## MapReduce 实验
 
 ### 气象数据实验
+---
 
 #### 数据准备
 ```sh
@@ -144,6 +145,7 @@ hadoop fs -cat /data/output1/part-r-00000
 ```
 
 ### 员工数据统计实验
+---
 
 #### 测试数据准备
 ```sh
