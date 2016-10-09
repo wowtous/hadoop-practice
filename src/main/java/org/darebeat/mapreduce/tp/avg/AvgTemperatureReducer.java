@@ -1,4 +1,4 @@
-package org.darebeat.mapreduce.emp.tp.avg;
+package org.darebeat.mapreduce.tp.avg;
 
 import java.io.IOException;
 import org.apache.hadoop.io.IntWritable;
