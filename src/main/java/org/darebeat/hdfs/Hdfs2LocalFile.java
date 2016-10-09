@@ -11,6 +11,7 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IOUtils;
 
 /**
+ * 读取local2hdfs第101-120字节的内容写入HDFS成为一个新文件
  * Created by darebeat on 10/9/16.
  */
 public class Hdfs2LocalFile {
