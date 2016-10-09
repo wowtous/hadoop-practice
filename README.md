@@ -179,7 +179,8 @@ hadoop fs -copyFromLocal data/emp /data/input
 hadoop fs -ls /data/input
 ```
 
-#### 编译并打包代码
+#### 员工数据统计
++ 编译并打包代码
 ```sh
 javac -cp $($HADOOP_HOME/bin/hadoop classpath) \
     -encoding UTF8 \
