@@ -2,6 +2,14 @@
 
 A project created to some hadoop example practice. 
 
+#### 项目准备
+```sh
+git clone https://github.com/wowtous/hadoop-practice.git
+cd hadoop-practice
+```
+
+---
+
 ## HDFS 实验
 
 #### 读取local2hdfs第101-120字节的内容写入HDFS成为一个新文件
