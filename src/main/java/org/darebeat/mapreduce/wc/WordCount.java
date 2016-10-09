@@ -1,4 +1,4 @@
-package org.darebeat.wc;
+package org.darebeat.mapreduce.wc;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

@@ -1,4 +1,4 @@
-package org.darebeat.emp;
+package org.darebeat.mapreduce.emp;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

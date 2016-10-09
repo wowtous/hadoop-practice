@@ -1,4 +1,4 @@
-package org.darebeat.emp;
+package org.darebeat.mapreduce.emp;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -14,7 +14,6 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
-import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
@@ -24,10 +23,10 @@ import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
 /**
- * 求各个部门的总工资
+ * 列出名字以J开头的员工姓名及其所属部门名称
  * Created by darebeat on 10/9/16.
  */
-public class Q1SumDeptSalary extends Configured implements Tool {
+public class Q7NameDeptOfStartJ extends Configured implements Tool {
 
     public static class MapClass extends Mapper<LongWritable, Text, Text, Text> {
 
@@ -75,44 +74,28 @@ public class Q1SumDeptSalary extends Configured implements Tool {
             // 对员工文件字段进行拆分
             kv = value.toString().split(",");
 
-            // map join: 在map阶段过滤掉不需要的数据，输出key为部门名称和value为员工工资
-            if (deptMap.containsKey(kv[7])) {
-                if (null != kv[5] && !"".equals(kv[5].toString())) {
-                    context.write(new Text(deptMap.get(kv[7].trim())), new Text(kv[5].trim()));
-                }
+            // 输出员工姓名为J开头的员工信息，key为员工姓名和value为员工所在部门名称
+            if (kv[1].toString().trim().startsWith("J")) {
+                context.write(new Text(kv[1].trim()), new Text(deptMap.get(kv[7].trim())));
             }
-        }
-    }
-
-    public static class Reduce extends Reducer<Text, Text, Text, LongWritable> {
-
-        public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
-
-            // 对同一部门的员工工资进行求和
-            long sumSalary = 0;
-            for (Text val : values) {
-                sumSalary += Long.parseLong(val.toString());
-            }
-
-            // 输出key为部门名称和value为该部门员工工资总和
-            context.write(key, new LongWritable(sumSalary));
         }
     }
 
     @Override
     public int run(String[] args) throws Exception {
 
-        // 实例化作业对象，设置作业名称、Mapper和Reduce类
-        Job job = new Job(getConf(), "Q1SumDeptSalary");
-        job.setJobName("Q1SumDeptSalary");
-        job.setJarByClass(Q1SumDeptSalary.class);
+        // 实例化作业对象，设置作业名称
+        Job job = new Job(getConf(), "Q7NameDeptOfStartJ");
+        job.setJobName("Q7NameDeptOfStartJ");
+
+        // 设置Mapper和Reduce类
+        job.setJarByClass(Q7NameDeptOfStartJ.class);
         job.setMapperClass(MapClass.class);
-        job.setReducerClass(Reduce.class);
 
         // 设置输入格式类
         job.setInputFormatClass(TextInputFormat.class);
 
-        // 设置输出格式
+        // 设置输出格式类
         job.setOutputFormatClass(TextOutputFormat.class);
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
@@ -129,10 +112,11 @@ public class Q1SumDeptSalary extends Configured implements Tool {
 
     /**
      * 主方法，执行入口
+     *
      * @param args 输入参数
      */
     public static void main(String[] args) throws Exception {
-        int res = ToolRunner.run(new Configuration(), new Q1SumDeptSalary(), args);
+        int res = ToolRunner.run(new Configuration(), new Q7NameDeptOfStartJ(), args);
         System.exit(res);
     }
 }

@@ -1,4 +1,4 @@
-package org.darebeat.tp.min;
+package org.darebeat.mapreduce.emp.tp.min;
 
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
